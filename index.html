@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baby's Morning App 🌞</title>
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" />
+  
+  <!-- Service Worker Registration -->
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('serviceWorker.js')
-        .then(() => console.log('Service Worker Registered'));
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/serviceWorker.js")
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch(err => console.error("❌ Service Worker registration failed:", err));
     }
   </script>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -56,11 +60,11 @@
     let day = parseInt(localStorage.getItem("babyDay")) || 0;
 
     function requestPermission() {
-      if (Notification.permission === 'granted') {
+      if (Notification.permission === "granted") {
         startMinuteNotification();
-      } else if (Notification.permission !== 'denied') {
+      } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then(permission => {
-          if (permission === 'granted') {
+          if (permission === "granted") {
             startMinuteNotification();
           }
         });
@@ -76,7 +80,7 @@
         showNotification(messages[day % messages.length]);
         day++;
         localStorage.setItem("babyDay", day);
-      }, 60000); // every 60,000ms = 1 minute
+      }, 60000); // every 1 minute
 
       alert("Notifications will show every minute 🩷");
     }
