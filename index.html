@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby's Morning App 🌞</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceWorker.js')
+        .then(() => console.log('Service Worker Registered'));
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #d63384;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff66b2;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Baby's Morning App 🌞</h1>
+  <p>This app will send a lovely message to Aakriti every minute 🥹💖</p>
+  <button onclick="requestPermission()">Enable Notifications</button>
+
+  <script>
+    const messages = [
+      "Good Morning jaanu! 😘",
+      "Uthana babyyy! I miss you 🥺",
+      "Aakriti meri sabse pyari ho 💖",
+      "Sapanama pani timi nai aau 💫",
+      "Arko din timro muskan le start gara 😍",
+      "Timi bina morning adhurai lagcha 😢",
+      "Last day ho tara maya ta infinite xa 😭💘"
+    ];
+
+    let day = parseInt(localStorage.getItem("babyDay")) || 0;
+
+    function requestPermission() {
+      if (Notification.permission === 'granted') {
+        startMinuteNotification();
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            startMinuteNotification();
+          }
+        });
+      }
+    }
+
+    function startMinuteNotification() {
+      showNotification(messages[day % messages.length]);
+      day++;
+      localStorage.setItem("babyDay", day);
+
+      setInterval(() => {
+        showNotification(messages[day % messages.length]);
+        day++;
+        localStorage.setItem("babyDay", day);
+      }, 60000); // every 60,000ms = 1 minute
+
+      alert("Notifications will show every minute 🩷");
+    }
+
+    function showNotification(text) {
+      new Notification("Good Morning Baby 🌞", {
+        body: text,
+        icon: "icon.png"
+      });
+    }
+  </script>
+</body>
+</html>
