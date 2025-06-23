@@ -14,10 +14,10 @@
     }
     header {
       text-align: center;
-      font-size: 32px;
+      font-size: 40px;
       font-weight: 900;
       background-color: #ffccd5;
-      padding: 10px;
+      padding: 30px;
       color: #d6336c;
     }
     nav {
@@ -58,7 +58,7 @@
     .mood-btn {
       display: block;
       width: 30%;
-      margin: 5px auto;
+      margin: 10px auto;
       padding: 10px;
       font-size: 16px;
       border: none;
@@ -110,6 +110,15 @@
       width: 100px;
       height: 100px;
     }
+
+        .mood-title {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ff1493;
+      font-weight: bold;
+      }
+    
     .heart {
       position: absolute;
       font-size: 50px;
@@ -214,7 +223,7 @@
     <button onclick="showTab('health-section')" aria-controls="health-section" aria-selected="false" id="nav-health">Health</button>
     <button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
   </nav>
-  
+
 
   <div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
     <h2 style="text-align:center;">Health / Period Support 🩺</h2>
@@ -265,6 +274,8 @@
   </div>
 
   <div id="main" class="section active" tabindex="-1" aria-label="Mood Selection">
+         <div class="mood-title">What's your mood today mam?</div>
+          <div class="mood-title">Please Select!</div>
     <button class="mood-btn" onclick="openMood('happy')">Happy😄</button>
     <button class="mood-btn" onclick="openMood('sad')">Sad😢</button>
     <button class="mood-btn" onclick="openMood('angry')">Angry😡</button>
