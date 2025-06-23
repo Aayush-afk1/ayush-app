@@ -28,15 +28,15 @@
       flex-wrap: wrap;
     }
     nav button {
-      margin: 5px 10px;
-      padding: 10px 20px;
+      margin: 1px 1px;
+      padding: 5px 10px;
       border: none;
       border-radius: 8px;
-      background: #ffb3c6;
+      background: #ff4e7a;
       color: white;
       font-weight: 900;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       transition: background-color 0.3s ease;
     }
     nav button:hover,
@@ -56,12 +56,12 @@
     }
     .mood-btn {
       display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 15px;
-      font-size: 18px;
+      width: 30%;
+      margin: 5px auto;
+      padding: 10px;
+      font-size: 16px;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #ffb3c6;
       color: white;
       font-weight: bold;
@@ -212,8 +212,8 @@
     <button onclick="showTab('about-section')" aria-controls="about-section" aria-selected="false" id="nav-about">About Me</button>
     <button onclick="showTab('health-section')" aria-controls="health-section" aria-selected="false" id="nav-health">Health</button>
     <button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
- 
   </nav>
+  
 
   <div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
     <h2 style="text-align:center;">Health / Period Support 🩺</h2>
@@ -398,6 +398,7 @@ const monthlyPeriodMessages = {
     "The stars look up to you, my sunshine 🌟"
   ];
 
+
   const today = new Date();
   const index = today.getFullYear() + today.getMonth() + today.getDate();
   const quoteIndex = index % beautyQuotes.length;
@@ -410,6 +411,7 @@ const monthlyPeriodMessages = {
 }
 
 showDailyBeautyQuote();
+
 
 
     // UI tab switching with ARIA selected states
@@ -457,6 +459,51 @@ function saveMood(mood) {
 
   localStorage.setItem('moodHistory', JSON.stringify(history));
 }
+const moodQuotes = {
+  happy: [
+    "Smile and shine bright! 😊",
+    "Happiness is a choice, choose it!",
+    "Good vibes only today 🌞"
+  ],
+  sad: [
+    "This too shall pass.",
+    "It's okay to feel down sometimes.",
+    "Better days are coming."
+  ],
+  angry: [
+    "Take a deep breath and calm down.",
+    "Let go of anger for your own peace.",
+    "Focus on what you can control."
+  ],
+ low: [
+    "Every day is a new opportunity.",
+    "You are stronger than your struggles.",
+    "Keep moving forward."
+  ],
+  tired: [
+    "Rest is productive too.",
+    "Take time to recharge.",
+    "Your body thanks you for rest."
+  ],
+};
+
+
+
+function getRandomQuote(mood) {
+  const quotes = moodQuotes[mood];
+  if (!quotes) return "Keep going!";
+  const index = Math.floor(Math.random() * quotes.length);
+  return quotes[index];
+}
+
+function showMoodQuote(mood) {
+  const quote = getRandomQuote(mood);
+  const quoteElement = document.getElementById("moodQuoteDisplay");
+  if (quoteElement) {
+    quoteElement.textContent = quote;
+  }
+}
+
 
 function loadMoodHistory() {
   const tbody = document.getElementById('mood-history-body');
@@ -1007,6 +1054,7 @@ function showPeriodDayTracker() {
         }
       }
     });
+    
 
     // Initialize app
     scheduleDailyNotification();
