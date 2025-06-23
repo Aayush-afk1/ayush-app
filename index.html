@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Arial', sans-serif;
       background: #f3eeee;
       overflow-x: hidden;
     }
@@ -29,7 +29,7 @@
     }
     nav button {
       margin: 1px 1px;
-      width: 6%;
+      width: 10%;
       padding: 1px 5px;
       border: none;
       border-radius: 8px;
@@ -47,7 +47,7 @@
     }
     .section {
       display: none;
-      padding: 20px;
+      padding: 10px;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -167,15 +167,15 @@
     /* Responsive improvements */
     @media (max-width: 600px) {
       nav {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
       }
       nav button {
-        width: 90%;
+        width: 20%;
         margin: 5px 0;
       }
       .mood-btn {
-        width: 95%;
+        width: 55%;
       }
     }
     /* Mood history table style */
@@ -265,12 +265,12 @@
   </div>
 
   <div id="main" class="section active" tabindex="-1" aria-label="Mood Selection">
-    <button class="mood-btn" onclick="openMood('happy')">Happy</button>
-    <button class="mood-btn" onclick="openMood('sad')">Sad</button>
-    <button class="mood-btn" onclick="openMood('angry')">Angry</button>
-    <button class="mood-btn" onclick="openMood('low')">Feeling Low</button>
-    <button class="mood-btn" onclick="openMood('tired')">Tired</button>
-    <button class="mood-btn" onclick="openMood('fight')">Fight him</button>
+    <button class="mood-btn" onclick="openMood('happy')">Happy😄</button>
+    <button class="mood-btn" onclick="openMood('sad')">Sad😢</button>
+    <button class="mood-btn" onclick="openMood('angry')">Angry😡</button>
+    <button class="mood-btn" onclick="openMood('low')">Feeling Low😔</button>
+    <button class="mood-btn" onclick="openMood('tired')">Tired 🛌</button>
+    <button class="mood-btn" onclick="openMood('fight')">Fight him💕</button>
   </div>
 
   <div id="fight" class="section" tabindex="-1" aria-label="Fight Mood">
