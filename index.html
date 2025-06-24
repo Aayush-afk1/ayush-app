@@ -1329,8 +1329,10 @@ deferredPrompt = null;
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
-    .then(() => console.log('Service Worker Registered'));
+  .then(() => console.log('Service Worker Registered'))
+  .catch(err => console.error('SW registration failed:', err));
 }
+
 function sendMessageToAyush() {
   const message = document.getElementById('customMessage').value.trim();
   if (!message) {
