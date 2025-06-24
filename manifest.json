@@ -1,8 +1,11 @@
 {
   "name": "Hello Aakriti 🌸",
   "short_name": "Aakriti",
+  "id": "hello-aakriti-app",
   "start_url": "./index.html",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#ff4081",
   "description": "",
@@ -13,7 +16,20 @@
       "type": "image/png"
     }
   ],
-  "id": "hello-aakriti-app",
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x960",
+      "label": "Mood Screen"
+    },
+    {
+      "src": "screenshot2.png",
+      "type": "image/png",
+      "sizes": "540x960",
+      "label": "Health / Period Care"
+    }
+  ],
   "launch_handler": {
     "client_mode": "focus-existing"
   }
