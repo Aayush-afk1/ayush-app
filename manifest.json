@@ -9,6 +9,8 @@
   "background_color": "#ffffff",
   "theme_color": "#ff4081",
   "description": "",
+  "dir": "ltr",
+  "categories": ["health", "lifestyle", "productivity"],
   "icons": [
     {
       "src": "icon.png",
@@ -21,16 +23,17 @@
       "src": "screenshot1.png",
       "type": "image/png",
       "sizes": "540x960",
-      "label": "Mood Screen"
+      "label": "Mood screen"
     },
     {
       "src": "screenshot2.png",
       "type": "image/png",
       "sizes": "540x960",
-      "label": "Health / Period Care"
+      "label": "Health & Period"
     }
   ],
   "launch_handler": {
     "client_mode": "focus-existing"
-  }
+  },
+  "iarc_rating_id": "pending"
 }
