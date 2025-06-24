@@ -1,42 +1,39 @@
 {
-"name": "Hello Aakriti 🌸",
-"short_name": "Aakriti",
-"id": "hello-aakriti-app",
-"start_url": "./index.html",
-"display": "standalone",
-"display_override": ["window-controls-overlay", "standalone"],
-"orientation": "portrait",
-"background_color": "#ffffff",
-"theme_color": "#ff4081",
-"description": "",
+  "name": "Hello Aakriti",
+  "short_name": "Aakriti",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ff4081",
+  "description": "Hello Aakriti - Daily mood and health tracker app.",
   "dir": "ltr",
+  "lang": "en-US",
   "categories": ["health", "lifestyle", "productivity"],
-"icons": [
-{
-"src": "icon.png",
-"sizes": "512x512",
-"type": "image/png"
-}
-],
-"screenshots": [
-{
-"src": "screenshot1.png",
-"type": "image/png",
-"sizes": "540x960",
-      "label": "Mood Screen"
-      "label": "Mood screen"
-},
-{
-"src": "screenshot2.png",
-"type": "image/png",
-"sizes": "540x960",
-      "label": "Health / Period Care"
-      "label": "Health & Period"
-}
-],
-"launch_handler": {
-"client_mode": "focus-existing"
-  }
-  },
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mood Tracker",
+      "url": "/index.html#mood",
+      "icons": [{ "src": "icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Health Tracker",
+      "url": "/index.html#health",
+      "icons": [{ "src": "icon.png", "sizes": "192x192" }]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/index.html?email=%s"
+    }
+  ],
   "iarc_rating_id": "pending"
 }
