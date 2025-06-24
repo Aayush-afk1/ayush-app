@@ -396,6 +396,7 @@ left: 120%;
 <button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
 </nav>
 
+<button id="installBtn" style="display: none;">Install App</button>
 
 <div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
 <h2 style="text-align:center;">Health / Period Support 🩺</h2>
@@ -1411,6 +1412,28 @@ window.addEventListener('load', () => {
   }, 2000);
 });
 
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBtn').style.display = 'block';
+});
+
+document.getElementById('installBtn').addEventListener('click', () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choice => {
+      if (choice.outcome === 'accepted') {
+        console.log('User accepted A2HS prompt');
+      } else {
+        console.log('User dismissed A2HS prompt');
+      }
+      deferredPrompt = null;
+      document.getElementById('installBtn').style.display = 'none';
+    });
+  }
+});
 
 // Initialize app
 scheduleDailyNotification();
