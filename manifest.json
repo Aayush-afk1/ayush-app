@@ -1,12 +1,11 @@
 {
   "name": "Hello Aakriti 🌸",
   "short_name": "Aakriti",
-  "id": "/index.html",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ff69b4",
-  "description": "Mood & Health app for Aakriti",
+  "theme_color": "#ff4081",
+  "description": "",
   "icons": [
     {
       "src": "icon.png",
@@ -14,7 +13,8 @@
       "type": "image/png"
     }
   ],
+  "id": "hello-aakriti-app",
   "launch_handler": {
-    "client_mode": "navigate-existing"
+    "client_mode": "focus-existing"
   }
 }
