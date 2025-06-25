@@ -1,15 +1,13 @@
 {
-  "name": "Hello Aakriti",
+  "name": "Aakriti App",
   "short_name": "Aakriti",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
+  "background_color": "#fff0f5",
+  "theme_color": "#ff66b2",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#ff4081",
-  "description": "Hello Aakriti - Daily mood and health tracker app.",
-  "dir": "ltr",
-  "lang": "en-US",
-  "categories": ["health", "lifestyle", "productivity"],
+  "description": "❤️",
+  "id": "/",
   "icons": [
     {
       "src": "icon.png",
@@ -17,23 +15,7 @@
       "type": "image/png"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "Mood Tracker",
-      "url": "/index.html#mood",
-      "icons": [{ "src": "icon.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Health Tracker",
-      "url": "/index.html#health",
-      "icons": [{ "src": "icon.png", "sizes": "192x192" }]
-    }
-  ],
-  "protocol_handlers": [
-    {
-      "protocol": "mailto",
-      "url": "/index.html?email=%s"
-    }
-  ],
-  "iarc_rating_id": "pending"
+  "launch_handler": {
+    "client_mode": "navigate-new"
+  }
 }
