@@ -1212,29 +1212,6 @@ if (yesBtn) yesBtn.remove();
 if (noBtn) noBtn.remove();
 }
 
-function confirmDay1Yes() {
-const confirmBtn = document.getElementById('confirm-day1-btn');
-const resetBtn = document.getElementById('reset-day1-btn');
-confirmBtn.disabled = true;
-confirmBtn.style.opacity = '0.5';
-resetBtn.disabled = true;
-
-const existingDate = localStorage.getItem('periodDay1');
-if (existingDate) {
-document.getElementById('confirm-feedback').textContent = `Period tracking already started on ${existingDate}.`;
-resetBtn.disabled = false;
-return;
-}
-
-const today = new Date().toISOString().split('T')[0];
-localStorage.setItem('periodDay1', today);
-localStorage.setItem('periodCurrentDay', '1');
-document.getElementById('confirm-feedback').textContent = "Period tracking started. Stay strong! ❤️";
-
-setTimeout(() => {
-showPeriodDayTracker();
-}, 1500);
-}
 
 function showPeriodDayTracker() {
 showTab('day-tracker');
@@ -1358,6 +1335,37 @@ function sendMessageToAyush() {
     showFloatingMessage("Failed to send message 😢");
   });
 }
+function requestNotificationPermission() {
+  if (!("Notification" in window)) return;
+
+  if (Notification.permission === "granted") {
+    scheduleDailyNotification();
+  } else if (Notification.permission === "default") {
+    // Show custom prompt or button to ask permission
+    showFloatingMessage("Enable notifications for daily love messages! 💖");
+    // Example: a button or click anywhere to trigger permission request
+    document.body.addEventListener('click', askPermissionOnce, { once: true });
+  } else if (Notification.permission === "denied") {
+    showFloatingMessage("Notifications blocked. You can enable them in browser settings.");
+  }
+}
+
+function askPermissionOnce() {
+  Notification.requestPermission().then(permission => {
+    if (permission === "granted") {
+      scheduleDailyNotification();
+      showFloatingMessage("Notifications enabled! 💕");
+    } else {
+      showFloatingMessage("Notifications not enabled.");
+    }
+  });
+}
+
+// On window load
+window.addEventListener('load', () => {
+  requestNotificationPermission();
+});
+
 function readMessageFromAakriti() {
   db.collection("messages")
     .orderBy("date", "desc")
