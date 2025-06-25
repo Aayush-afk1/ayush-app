@@ -3,15 +3,15 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/ayush-app/', // ✅ Required for GitHub Pages
+  base: '/ayush-app/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
-        name: 'Aakriti',             
-        short_name: 'Aakriti',       
+        name: 'Aakriti',
+        short_name: 'Aakriti',
         start_url: '.',
         display: 'standalone',
         background_color: '#ffffff',
