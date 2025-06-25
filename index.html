@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <title>Hello Aakriti 🌸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#ff4081">
+    <link rel="manifest" href="/ayush-app/manifest.json" />
+    <link rel="icon" href="/ayush-app/icons/icon-512.png" />
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
@@ -25,6 +25,7 @@
       });
     }
   </script>
+  
 <style>
 body {
 margin: 0;
@@ -388,6 +389,7 @@ left: 120%;
 </style>
 </head>
 <body>
+  
 <div class="loader" id="loader" role="alert" aria-live="assertive">
 <div class="heart-wrapper" aria-hidden="true">
 <div class="heart heart-left">❤️</div>
@@ -411,7 +413,8 @@ left: 120%;
 <button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
 </nav>
 
-<button id="installBtn" style="display: none;">Install App</button>
+<button id="installBtn">Install Aakriti</button>
+
 
 <div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
 <h2 style="text-align:center;">Health / Period Support 🩺</h2>
@@ -1255,6 +1258,7 @@ setInterval(sendNotificationWithQuote, 24 * 60 * 60 * 1000);
 }, timeout);
 });
 }
+
 function sendNotificationWithQuote() {
 const lastIndex = parseInt(localStorage.getItem('lastQuoteIndex') || '-1');
 let nextIndex = (lastIndex + 1) % quotes.length;
@@ -1298,28 +1302,6 @@ icon: 'icon.png'
 });
 }
 }
-
-// PWA install prompt handling
-window.addEventListener('beforeinstallprompt', (e) => {
-e.preventDefault();
-deferredPrompt = e;
-showFloatingMessage("Tap here to add app to your home screen");
-// Optionally, you can add a button to trigger install
-document.body.onclick = () => {
-if (deferredPrompt) {
-deferredPrompt.prompt();
-deferredPrompt.userChoice.then(choiceResult => {
-if (choiceResult.outcome === 'accepted') {
-console.log('User accepted the install prompt');
-} else {
-console.log('User dismissed the install prompt');
-}
-deferredPrompt = null;
-});
-}
-}
-});
-
 
 function sendMessageToAyush() {
   const message = document.getElementById('customMessage').value.trim();
@@ -1431,30 +1413,25 @@ window.addEventListener('load', () => {
 });
 
 let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  document.getElementById('installBtn').style.display = 'block';
+  installBtn.style.display = 'block';
 });
 
-document.getElementById('installBtn').addEventListener('click', () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(choice => {
-      if (choice.outcome === 'accepted') {
-        console.log('User accepted A2HS prompt');
-      } else {
-        console.log('User dismissed A2HS prompt');
-      }
-      deferredPrompt = null;
-      document.getElementById('installBtn').style.display = 'none';
-    });
-  }
+installBtn.addEventListener('click', async () => {
+  deferredPrompt.prompt();
+  const choice = await deferredPrompt.userChoice;
+  console.log('User choice:', choice.outcome);
+  installBtn.style.display = 'none';
 });
+
 
 // Initialize app
 scheduleDailyNotification();
 </script>
+  <script type="module" src="/ayush-app/src/main.jsx"></script>
 </body>
 </html>
