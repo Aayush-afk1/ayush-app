@@ -3,12 +3,11 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/ayush-app/',
+  base: '/ayush-app/', // ✅ This is required for GitHub Pages!
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'icons/icon-192.png', 'icons/icon-512.png'],
       manifest: {
         name: 'Aakriti',
         short_name: 'Aakriti',
@@ -31,4 +30,4 @@ export default defineConfig({
       }
     })
   ]
-});
+})
