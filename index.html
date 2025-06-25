@@ -1303,28 +1303,6 @@ icon: 'icon.png'
 }
 }
 
-// PWA install prompt handling
-window.addEventListener('beforeinstallprompt', (e) => {
-e.preventDefault();
-deferredPrompt = e;
-showFloatingMessage("Tap here to add app to your home screen");
-// Optionally, you can add a button to trigger install
-document.body.onclick = () => {
-if (deferredPrompt) {
-deferredPrompt.prompt();
-deferredPrompt.userChoice.then(choiceResult => {
-if (choiceResult.outcome === 'accepted') {
-console.log('User accepted the install prompt');
-} else {
-console.log('User dismissed the install prompt');
-}
-deferredPrompt = null;
-});
-}
-}
-});
-
-
 function sendMessageToAyush() {
   const message = document.getElementById('customMessage').value.trim();
   if (!message) {
