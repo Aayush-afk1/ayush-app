@@ -413,7 +413,8 @@ left: 120%;
 <button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
 </nav>
 
-<button id="installBtn" style="display: none;">Install App</button>
+<button id="installBtn">Install Aakriti</button>
+
 
 <div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
 <h2 style="text-align:center;">Health / Period Support 🩺</h2>
@@ -1257,43 +1258,7 @@ setInterval(sendNotificationWithQuote, 24 * 60 * 60 * 1000);
 }, timeout);
 });
 }
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          getToken(messaging, {
-            vapidKey: "BPP8BwGaMHLDRW5kICCAfkR2434is9mQAyPSeQkVrWN4TNppsLgb_hr_83-qu3gf0QoFEI-S9Aeg1etDk0DRh84"
-          }).then(async (currentToken) => {
-            if (currentToken) {
-              console.log("✅ FCM Token:", currentToken);
-              
-              // Get startDate from localStorage (optional)
-              const startDate = localStorage.getItem("startDate");
 
-              // Save to Firestore
-              const userRef = doc(db, "users", currentToken);
-              await setDoc(userRef, {
-                fcmToken: currentToken,
-                startDate: startDate || null,
-                updatedAt: serverTimestamp()
-              }, { merge: true });
-
-              console.log("✅ Token & startDate saved to Firestore");
-            } else {
-              console.warn("⚠️ No registration token available.");
-            }
-          }).catch((err) => {
-            console.error("❌ Error getting token:", err);
-          });
-        }
-      });
-
-      // Foreground message handling
-      onMessage(messaging, (payload) => {
-        console.log("📩 Foreground notification received:", payload);
-        new Notification(payload.notification.title, {
-          body: payload.notification.body,
-          icon: payload.notification.icon || "/icons/icon-192.png"
-        });
-      });
 function sendNotificationWithQuote() {
 const lastIndex = parseInt(localStorage.getItem('lastQuoteIndex') || '-1');
 let nextIndex = (lastIndex + 1) % quotes.length;
@@ -1470,27 +1435,21 @@ window.addEventListener('load', () => {
 });
 
 let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  document.getElementById('installBtn').style.display = 'block';
+  installBtn.style.display = 'block';
 });
 
-document.getElementById('installBtn').addEventListener('click', () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(choice => {
-      if (choice.outcome === 'accepted') {
-        console.log('User accepted A2HS prompt');
-      } else {
-        console.log('User dismissed A2HS prompt');
-      }
-      deferredPrompt = null;
-      document.getElementById('installBtn').style.display = 'none';
-    });
-  }
+installBtn.addEventListener('click', async () => {
+  deferredPrompt.prompt();
+  const choice = await deferredPrompt.userChoice;
+  console.log('User choice:', choice.outcome);
+  installBtn.style.display = 'none';
 });
+
 
 // Initialize app
 scheduleDailyNotification();
