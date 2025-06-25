@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Hello Aakriti 🌸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/ayush-app/manifest.json" />
+    <link rel="icon" href="/ayush-app/icons/icon-512.png" />
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<!-- (Optional) Add more SDKs if needed, like auth/firestore -->
+ <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.log('ServiceWorker registration failed:', error);
+          });
+      });
+    }
+  </script>
+  
+<style>
+body {
+margin: 0;
+font-family: 'Arial', sans-serif;
+background: #f3eeee;
+overflow-x: hidden;
+}
+/* Shine animation for letter by letter in #about-section h2 */
+#about-section h2 {
+font-weight: bold;
+font-family: 'Poppins', sans-serif;
+font-size: 24px;
+text-align: center;
+color: #d6336c;
+}
+
+/* Letter span base style */
+#about-section h2 span {
+position: relative;
+display: inline-block;
+color: #ff045c;
+filter: drop-shadow(0 0 3px #ff4e7a);
+background: linear-gradient(90deg, #ff0296 30%, #f37a7a 50%, #ff66cc 70%);
+background-size: 200% auto;
+animation: shineLetter 2s ease forwards;
+animation-iteration-count: infinite;
+animation-fill-mode: forwards;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* Same keyframes as header shine */
+@keyframes shineLetter {
+0% {
+background-position: 200% 0;
+filter: drop-shadow(0 0 0 #ff4e7a);
+}
+50% {
+background-position: 50% 0;
+filter: drop-shadow(0 0 10px #ff99cc);
+}
+100% {
+background-position: -50% 0;
+filter: drop-shadow(0 0 0 #ff4e7a);
+}
+}
+
+/* Stagger animation delay for each letter */
+#about-section h2 span:nth-child(1) { animation-delay: 0s; }
+#about-section h2 span:nth-child(2) { animation-delay: 0.1s; }
+#about-section h2 span:nth-child(3) { animation-delay: 0.2s; }
+/* and so on - extend for all letters */
+
+#shining-header {
+font-size: 35px;
+font-weight: 900;
+font-family: 'Poppins', sans-serif;
+color: #d6336c;
+text-align: center;
+user-select: none;
+background-color: #ffccd5;
+padding: 30px;
+}
+
+/* Base letter style */
+#shining-header span {
+position: relative;
+display: inline-block;
+color: #d6336c;
+filter: drop-shadow(0 0 3px #ff4e7a);
+/* Make text visible for animation */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background: linear-gradient(90deg, #f700a4 30%, #f5cfe8 50%, #ff66cc 70%);
+background-size: 200% auto;
+animation: shineLetter 2s ease forwards;
+animation-iteration-count: infinite;
+animation-fill-mode: forwards;
+background-clip: text;
+}
+
+/* Animation to slide the shine gradient on each letter */
+@keyframes shineLetter {
+0% {
+background-position: 200% 0;
+filter: drop-shadow(0 0 0 #ff4e7a);
+}
+50% {
+background-position: 50% 0;
+filter: drop-shadow(0 0 10px #ff99cc);
+}
+100% {
+background-position: -50% 0;
+filter: drop-shadow(0 0 0 #ff4e7a);
+}
+}
+
+/* Add staggered animation delay for each letter */
+#shining-header span:nth-child(1) { animation-delay: 0s; }
+#shining-header span:nth-child(2) { animation-delay: 0.15s; }
+#shining-header span:nth-child(3) { animation-delay: 0.3s; }
+#shining-header span:nth-child(4) { animation-delay: 0.45s; }
+#shining-header span:nth-child(5) { animation-delay: 0.6s; }
+#shining-header span:nth-child(6) { animation-delay: 0.75s; }
+#shining-header span:nth-child(7) { animation-delay: 0.9s; }
+#shining-header span:nth-child(8) { animation-delay: 1.05s; }
+#shining-header span:nth-child(9) { animation-delay: 1.2s; }
+#shining-header span:nth-child(10) { animation-delay: 1.35s; }
+#shining-header span:nth-child(11) { animation-delay: 1.5s; }
+#shining-header span:nth-child(12) { animation-delay: 1.65s; }
+#shining-header span:nth-child(13) { animation-delay: 1.8s; }
+#shining-header span:nth-child(14) { animation-delay: 1.95s; }
+#shining-header span:nth-child(15) { animation-delay: 2.1s; }
+
+
+nav {
+display: flex;
+justify-content: center;
+background: #ffdce0;
+padding: 10px 0;
+flex-wrap: wrap;
+}
+
+
+nav button {
+margin: 5px 10px;
+      font-family: 'Arial Black', Gadget, sans-serif !important;
+font-family: 'Poppins', cursive;
+width: 20%;
+padding: 10px 20px;
+border: none;
+border-radius: 8px;
+background: #ff4e7a;
+color: white;
+font-weight: 800;
+cursor: pointer;
+font-size: 15px;
+transition: background-color 0.3s ease;
+}
+button[id^="nav-"]:hover {
+color: white;
+background: linear-gradient(to right, #ff6ec4, #7873f5);
+border-radius: 12px;
+padding: 6px 12px;
+box-shadow: 0 0 10px #ff99cc;
+transform: scale(1.05);
+}
+nav button:focus {
+background-color: #d6336c;
+outline: none;
+}
+.section {
+display: none;
+padding: 10px;
+opacity: 0;
+transition: opacity 0.4s ease;
+}
+.section.active {
+display: block;
+opacity: 1;
+}
+.mood-btn {
+display: block;
+width: 30%;
+margin: 10px auto;
+padding: 10px;
+font-size: 16px;
+border: none;
+border-radius: 10px;
+background: #ffb3c6;
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.mood-btn:hover,
+button[id^="nav-"]:hover {
+color: white;
+background: linear-gradient(to right, #ff6ec4, #7873f5);
+border-radius: 12px;
+padding: 6px 12px;
+box-shadow: 0 0 10px #ff99cc;
+transform: scale(1.05);
+}
+.mood-btn:focus {
+background-color: #d6336c;
+outline: none;
+}
+.back-btn {
+margin-top: 20px;
+display: block;
+background: #ffccd5;
+color: #d6336c;
+padding: 10px 20px;
+border: none;
+border-radius: 10px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.back-btn:hover,
+.back-btn:focus {
+background-color: #d6336c;
+color: white;
+outline: none;
+}
+/* Loader and hearts as before */
+.loader {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #fff0f3;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+}
+.heart-wrapper {
+position: relative;
+width: 100px;
+height: 100px;
+}
+
+.mood-title {
+text-align: center;
+font-size: 22px;
+margin-bottom: 10px;
+color: #ff1493;
+font-weight: bold;
+}
+
+.heart {
+position: absolute;
+font-size: 50px;
+animation-duration: 1.5s;
+animation-fill-mode: forwards;
+}
+.heart-left {
+left: -100px;
+animation-name: slideLeft;
+}
+.heart-right {
+right: -100px;
+animation-name: slideRight;
+}
+@keyframes slideLeft {
+0% { left: -100px; }
+100% { left: 25px; }
+}
+@keyframes slideRight {
+0% { right: -100px; }
+100% { right: 25px; }
+}
+.heart-letter {
+position: absolute;
+top: 30px;
+left: 42px;
+font-size: 30px;
+font-weight: bold;
+color: white;
+animation: fadeIn 1s ease-in-out 1.5s forwards;
+opacity: 0;
+}
+@keyframes fadeIn {
+0% { opacity: 0; transform: scale(0); }
+100% { opacity: 1; transform: scale(1); }
+}
+.floating-message {
+position: fixed;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+background: #ffccd5;
+color: #d6336c;
+padding: 10px 20px;
+border-radius: 20px;
+font-weight: bold;
+animation: float 3s ease-in-out infinite;
+display: none;
+z-index: 1000;
+}
+@keyframes float {
+0%, 100% { transform: translate(-50%, 0); }
+50% { transform: translate(-50%, -10px); }
+}
+/* Responsive improvements */
+@media (max-width: 600px) {
+nav {
+flex-direction: row;
+align-items: center;
+}
+nav button {
+width: 20%;
+margin: 5px 0;
+}
+.mood-btn {
+width: 55%;
+}
+}
+/* Mood history table style */
+#mood-history-table {
+width: 90%;
+margin: 10px auto;
+border-collapse: collapse;
+font-size: 16px;
+}
+#mood-history-table th, #mood-history-table td {
+border: 1px solid #d6336c;
+padding: 8px;
+text-align: center;
+color: #d6336c;
+}
+#mood-history-table th {
+background-color: #ffb3c6;
+color: white;
+}
+.quoteBox {
+margin-top: 30px;
+padding: 10px;
+font-style: italic;
+font-size: 1.6em;
+text-align: center;
+color: #ff1900;
+position: relative;
+display: inline-block;
+background-color: #f3eeee;
+overflow: hidden;
+}
+
+/* Light shine overlay effect */
+.quoteBox::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+height: 100%;
+width: 50%;
+background: linear-gradient(
+120deg,
+rgba(243, 109, 109, 0) 0%,
+rgb(247, 185, 214) 50%,
+rgba(255, 255, 255, 0) 100%
+);
+transform: skewX(-20deg);
+animation: shine-slide 2.5s ease-in-out infinite;
+}
+
+@keyframes shine-slide {
+0% {
+left: -100%;
+}
+100% {
+left: 120%;
+}
+}
+
+
+</style>
+</head>
+<body>
+  
+<div class="loader" id="loader" role="alert" aria-live="assertive">
+<div class="heart-wrapper" aria-hidden="true">
+<div class="heart heart-left">❤️</div>
+<div class="heart heart-right">❤️</div>
+<div class="heart-letter">A</div>
+</div>
+</div>
+
+<header id="shining-header">
+<span>H</span><span>e</span><span>l</span><span>l</span><span>o</span>
+<span> </span>
+<span>A</span><span>a</span><span>k</span><span>r</span><span>i</span><span>t</span><span>i</span>
+<span> </span>
+<span>🌸</span>
+</header>
+<nav role="navigation" aria-label="Main Navigation">
+<button onclick="showTab('main')" aria-controls="main" aria-selected="true" id="nav-main">Mood</button>
+<button onclick="showTab('quizz-section')" aria-controls="quizz-section" aria-selected="false" id="nav-quiz">Quizz</button>
+<button onclick="showTab('about-section')" aria-controls="about-section" aria-selected="false" id="nav-about">About Me</button>
+<button onclick="showTab('health-section')" aria-controls="health-section" aria-selected="false" id="nav-health">Health</button>
+<button onclick="showTab('mood-history-section')" aria-controls="mood-history-section" aria-selected="false" id="nav-history">Mood History</button>
+</nav>
+
+<button id="installBtn">Install Aakriti</button>
+
+
+<div id="health-section" class="section" tabindex="-1" aria-label="Health Section">
+<h2 style="text-align:center;">Health / Period Support 🩺</h2>
+<div style="text-align:center;">
+<button class="mood-btn" onclick="showTab('general-health')">🩹 General Health</button>
+<button class="mood-btn" onclick="showTab('period-options')">🩸 Period Care</button>
+</div>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+
+<div id="general-health" class="section" tabindex="-1" aria-label="General Health Input">
+<h3 style="text-align:center;">General Health Input</h3>
+<input type="text" id="generalInput" placeholder="Describe your problem..." style="padding:10px; width:90%; border-radius:10px; border:none;" aria-label="General health problem input">
+<button class="mood-btn" onclick="checkGeneral()">Check</button>
+<p id="general-result" style="font-weight:bold; text-align:center; margin-top:10px;"></p>
+<button class="back-btn" onclick="showTab('health-section')">← Back</button>
+</div>
+
+<div id="period-options" class="section" tabindex="-1" aria-label="Period Care Options">
+<h3 style="text-align:center;">Period Care Options</h3>
+<button class="mood-btn" onclick="openDay1Confirm()">Is Today Your Day 1?</button>
+<button class="mood-btn" onclick="showTab('period-input')">Just Period</button>
+<button class="back-btn" onclick="showTab('health-section')">← Back</button>
+</div>
+
+<div id="day1-confirm" class="section" tabindex="-1" aria-label="Confirm Day 1 of Period">
+<h3 style="text-align:center;">🩸 Confirm Day 1 of Period</h3>
+<p style="text-align:center; font-size:18px;">Is today your first day of period?</p>
+<button class="mood-btn" id="confirm-day1-btn" onclick="confirmDay1Yes()">Yes, it's Day 1</button>
+<button class="mood-btn" id="reset-day1-btn" onclick="resetPeriodTracker()">Reset</button>
+<p id="confirm-feedback" style="text-align:center; color:#d6336c; margin-top:10px; font-weight:bold;"></p>
+<button class="back-btn" onclick="showTab('period-options')">← Back</button>
+</div>
+
+
+<div id="period-input" class="section" tabindex="-1" aria-label="Period Concern Input">
+<h3 style="text-align:center;">Period Concern</h3>
+<input type="text" id="periodInput" placeholder="Type your concern..." style="padding:10px; width:90%; border-radius:10px; border:none;" aria-label="Period concern input">
+<button class="mood-btn" onclick="checkPeriod()">Check</button>
+<p id="period-result" style="font-weight:bold; text-align:center; margin-top:10px;"></p>
+<button class="back-btn" onclick="showTab('period-options')">← Back</button>
+</div>
+
+<div id="day-tracker" class="section" tabindex="-1" aria-label="Period Day Tracker">
+<h3 style="text-align:center;">Period Day Tracker</h3>
+<p id="period-day-message" style="text-align:center; font-weight:bold;"></p>
+<button class="back-btn" onclick="showTab('health-section')">← Back</button>
+</div>
+
+<div id="main" class="section active" tabindex="-1" aria-label="Mood Selection">
+<div class="mood-title">What's your mood today mam?</div>
+<div class="mood-title">Please Select!</div>
+<button class="mood-btn" onclick="openMood('happy')">Happy😄</button>
+<button class="mood-btn" onclick="openMood('sad')">Sad😢</button>
+<button class="mood-btn" onclick="openMood('angry')">Angry😡</button>
+<button class="mood-btn" onclick="openMood('low')">Feeling Low😔</button>
+<button class="mood-btn" onclick="openMood('tired')">Tired 🛌</button>
+<button class="mood-btn" onclick="openMood('fight')">Fight him💕</button>
+</div>
+
+<div id="fight" class="section" tabindex="-1" aria-label="Fight Mood">
+<h2 style="text-align:center;"> please dont fight🥺</h2>
+<p style="text-align:center;">eti sano haat liyera ko sanga fight garxau ra</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+
+<div id="happy" class="section" tabindex="-1" aria-label="Happy Mood">
+<h2 style="text-align:center;">You're Happy Today 😄</h2>
+<p style="text-align:center;">So proud of you! Smile more baby 💖</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+<div id="sad" class="section" tabindex="-1" aria-label="Sad Mood">
+<h2 style="text-align:center;">Feeling Sad 😢</h2>
+<p style="text-align:center;">It’s okay baby. I'm with you always 💕</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+<div id="angry" class="section" tabindex="-1" aria-label="Angry Mood">
+<h2 style="text-align:center;">You're Angry 😡</h2>
+<p style="text-align:center;">Take a deep breath love ❤️‍🔥</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+<div id="low" class="section" tabindex="-1" aria-label="Feeling Low Mood">
+<h2 style="text-align:center;">Feeling Low 😔</h2>
+<p style="text-align:center;">You're not alone. You matter always 🌸</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+<div id="tired" class="section" tabindex="-1" aria-label="Tired Mood">
+<h2 style="text-align:center;">Feeling Tired 🛌</h2>
+<p style="text-align:center;">Rest, recharge. You deserve peace 💕</p>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+<div class="quoteBox"></div>
+
+
+<div id="quizz-section" class="section" tabindex="-1" aria-label="Quiz Section">
+<h2 style="text-align:center;">Daily Quiz 🗒️</h2>
+<div id="quiz-container"></div>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+
+
+<div id="about-section" class="section" tabindex="-1" aria-label="About Section">
+<h2 style="text-align:center;">
+<span>T</span><span>h</span><span>i</span><span>s</span><span> </span>
+<span>a</span><span>p</span><span>p</span><span> </span>
+<span>i</span><span>s</span><span> </span>
+<span>m</span><span>a</span><span>d</span><span>e</span><span> </span>
+<span>f</span><span>o</span><span>r</span><span> </span>
+<span>A</span><span>a</span><span>k</span><span>r</span><span>i</span><span>t</span><span>i</span>
+<span> </span>
+<span>G</span><span>i</span><span>r</span><span>i</span>
+<span> </span>
+<span>🌹</span>
+<span> </span>
+<span>b</span><span>y</span><span> </span>
+<span>s</span><span>o</span><span>m</span><span>e</span><span>o</span><span>n</span><span>e</span>
+<span> </span>
+<span>w</span><span>h</span><span>o</span><span> </span>
+<span>l</span><span>o</span><span>v</span><span>e</span><span>s</span>
+<span> </span>
+<span>h</span><span>e</span><span>r</span>
+<span> </span>
+<span>d</span><span>e</span><span>a</span><span>r</span><span>l</span><span>y</span>
+<span> </span>
+<span>❤️</span>
+</h2>
+
+<p>You can send a private message to Ayush 💌</p>
+
+<textarea id="customMessage" placeholder="Type your message..." rows="4" style="width: 90%; padding: 10px;"></textarea><br>
+<button onclick="sendMessageToAyush()">Send Message</button>
+<button onclick="readMessageFromAakriti()">📨 View Message</button>
+</div>
+
+
+<!-- New Mood History Section -->
+<div id="mood-history-section" class="section" tabindex="-1" aria-label="Mood History Section">
+<h2 style="text-align:center;">Mood History</h2>
+<table id="mood-history-table" aria-describedby="mood-history-desc">
+<caption id="mood-history-desc">List of moods you selected previously with date</caption>
+<thead>
+<tr><th>Date</th><th>Mood</th><th>Tip</th></tr>
+</thead>
+<tbody id="mood-history-body"></tbody>
+</table>
+<button class="back-btn" onclick="showTab('main')">← Back</button>
+</div>
+
+
+<div class="floating-message" id="floatingMsg" role="alert" aria-live="polite"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script>
+      const firebaseConfig = {
+    apiKey: "AIzaSyCg06rK2yDeHdoeg4D4NJb3TYjlwqQGKdw",
+    authDomain: "aakriti-cbde0.firebaseapp.com",
+    projectId: "aakriti-cbde0",
+    storageBucket: "aakriti-cbde0.firebasestorage.app",
+    messagingSenderId: "543051670501",
+    appId: "1:543051670501:web:6c8591fe0878622473c50c",
+    measurementId: "G-SNT13V6DDR"
+  };
+
+  
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  // Initialize Analytics
+  const analytics = firebase.analytics();
+const monthlyPeriodMessages = {
+0: [ // January
+"Day 1: New year, new strength. Rest well and stay warm.",
+"Day 2: You're stronger than you think. Hydrate and smile.",
+"Day 3: Light movement can help. You're doing great.",
+"Day 4: Watch a movie or cuddle a pillow. Comfort matters.",
+"Day 5: Almost done! Warm tea and peace for you today.",
+"Day 6: If it's over, celebrate! If not, I'm here. ❤️"
+],
+1: [ // February
+"Day 1: Love yourself extra today. It's okay to rest.",
+"Day 2: Hug your teddy. You deserve softness.",
+"Day 3: You’re glowing, even through pain. Breathe.",
+"Day 4: Let chocolate and naps be your medicine.",
+"Day 5: Warm water and good vibes today 💕",
+"Day 6: Celebrate your strength or hold on gently 🌷"
+],
+2: [ // March
+"Day 1: Spring is near, feel your inner bloom begin 🌸",
+"Day 2: Gentle steps and self-care win today.",
+"Day 3: You're halfway. Let the kindness continue.",
+"Day 4: Tea, cozy socks, and peace for your heart.",
+"Day 5: It’s nearly over. Smile through it 🌼",
+"Day 6: Flowers and love, either way today is yours 💐"
+],
+// ... Repeat up to month 11
+};
+
+
+const quotes = [
+"You are loved 🥺❤️",
+"Smile baby, today is yours 😊",
+"I miss you more every day 😔",
+"Stay strong, my girl 💪",
+"You're magic and love 💖"
+];
+
+const moodTips = {
+happy: "Keep shining! 😊",
+sad: "I'm here for you 💕",
+angry: "Take deep breaths ❤️‍🔥",
+low: "You are not alone 🌸",
+tired: "Rest well, recharge 💖",
+fight: "Love wins always 💞"
+};
+
+function showDailyBeautyQuote() {
+const beautyQuotes = [
+"Your smile makes the sun look dull, Aakriti 💖",
+"Even flowers envy your beauty 🌹",
+"Every day with you is a page from a fairytale ✨",
+"Your eyes are poetry in motion 😍",
+"No mirror can reflect your inner glow like my heart does 😘",
+"Red roses wish they were as stunning as you ❤️",
+"You’re the definition of perfection, Aakriti 💫",
+"Your presence turns ordinary moments magical 🌸",
+"When you flip your hair, the world pauses 😌",
+"The stars look up to you, my sunshine 🌟"
+];
+
+
+const today = new Date();
+const index = today.getFullYear() + today.getMonth() + today.getDate();
+const quoteIndex = index % beautyQuotes.length;
+const quote = beautyQuotes[quoteIndex];
+
+const quoteBoxes = document.querySelectorAll(".quoteBox");
+quoteBoxes.forEach(box => {
+box.innerText = quote;
+
+});
+}
+
+showDailyBeautyQuote();
+
+
+
+// UI tab switching with ARIA selected states
+function showTab(id) {
+const sections = document.querySelectorAll('.section');
+const navButtons = document.querySelectorAll('nav button');
+sections.forEach(sec => {
+if (sec.id === id) {
+sec.classList.add('active');
+sec.focus();
+} else {
+sec.classList.remove('active');
+}
+});
+navButtons.forEach(btn => {
+btn.setAttribute('aria-selected', btn.getAttribute('aria-controls') === id ? 'true' : 'false');
+});
+if (id === 'quizz-section') {
+loadQuiz();
+}
+if (id === 'mood-history-section') {
+loadMoodHistory();
+}
+}
+
+
+// Mood opening and saving history
+function openMood(mood) {
+// Show mood section
+showTab(mood);
+saveMood(mood);
+}
+function saveMood(mood) {
+const history = JSON.parse(localStorage.getItem('moodHistory') || '[]');
+const now = new Date();
+const entry = {
+date: now.toLocaleDateString(),
+time: now.toLocaleTimeString(),
+mood: mood,
+tip: moodTips[mood] || ''
+};
+history.push(entry);
+
+// Limit to 100 saved entries (optional safety)
+if (history.length > 100) history.shift();
+
+localStorage.setItem('moodHistory', JSON.stringify(history));
+}
+const moodQuotes = {
+happy: [
+"Smile and shine bright! 😊",
+"Happiness is a choice, choose it!",
+"Good vibes only today 🌞"
+],
+sad: [
+"This too shall pass.",
+"It's okay to feel down sometimes.",
+"Better days are coming."
+],
+angry: [
+"Take a deep breath and calm down.",
+"Let go of anger for your own peace.",
+"Focus on what you can control."
+],
+low: [
+"Every day is a new opportunity.",
+"You are stronger than your struggles.",
+"Keep moving forward."
+],
+tired: [
+"Rest is productive too.",
+"Take time to recharge.",
+"Your body thanks you for rest."
+],
+};
+
+
+
+function getRandomQuote(mood) {
+const quotes = moodQuotes[mood];
+if (!quotes) return "Keep going!";
+const index = Math.floor(Math.random() * quotes.length);
+return quotes[index];
+}
+
+function showMoodQuote(mood) {
+const quote = getRandomQuote(mood);
+const quoteElement = document.getElementById("moodQuoteDisplay");
+if (quoteElement) {
+quoteElement.textContent = quote;
+}
+}
+
+
+function loadMoodHistory() {
+const tbody = document.getElementById('mood-history-body');
+const history = JSON.parse(localStorage.getItem('moodHistory') || '[]');
+tbody.innerHTML = '';
+if (history.length === 0) {
+tbody.innerHTML = '<tr><td colspan="3">No mood history yet.</td></tr>';
+return;
+}
+
+// Show last 10 only
+history.slice(-10).reverse().forEach(entry => {
+const tr = document.createElement('tr');
+tr.innerHTML = `<td>${entry.date}<br><small>${entry.time}</small></td><td>${capitalize(entry.mood)}</td><td>${entry.tip}</td>`;
+tbody.appendChild(tr);
+});
+}
+
+
+function capitalize(str) {
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Quiz load & display
+function loadQuiz() {
+const today = new Date().toISOString().split('T')[0];
+const quizContainer = document.getElementById('quiz-container');
+quizContainer.innerHTML = '';
+if (!quizData[today]) {
+quizContainer.innerHTML = "<p style='text-align:center;'>No quiz for today yet.</p>";
+return;
+}
+quizData[today].forEach((q, idx) => {
+const div = document.createElement('div');
+div.style.marginBottom = '15px';
+div.innerHTML = `
+         <p><strong>Q${idx + 1}:</strong> ${q.q}</p>
+         <input type="text" id="answer-${idx}" aria-label="Answer for question ${idx + 1}" />
+         <button onclick="checkAnswer(${idx})" aria-label="Check answer for question ${idx + 1}">Check</button>
+         <p id="result-${idx}" style="font-weight:bold; color:#d6336c;"></p>
+       `;
+quizContainer.appendChild(div);
+});
+}
+
+function checkAnswer(idx) {
+const today = new Date().toISOString().split('T')[0];
+const q = quizData[today][idx];
+const input = document.getElementById(`answer-${idx}`);
+const result = document.getElementById(`result-${idx}`);
+if (input.value.trim().toLowerCase() === q.a.toLowerCase()) {
+result.textContent = "Correct! 🎉";
+} else {
+result.textContent = `Incorrect. Correct answer: ${q.a}`;
+}
+}
+
+// Floating message helper
+function showFloatingMessage(msg) {
+const floating = document.getElementById('floatingMsg');
+floating.textContent = msg;
+floating.style.display = 'block';
+setTimeout(() => {
+floating.style.display = 'none';
+}, 3500);
+}
+
+// Health general check logic with multiple keywords & suggestions
+const healthResponses = {
+headache: "Drink water, rest, and avoid screen time.",
+fever: "Stay hydrated and rest. See a doctor if fever is high.",
+cold: "Try steam inhalation and warm fluids.",
+stomach: "Avoid heavy meals, eat light and drink ginger tea.",
+cough: "Stay hydrated and use honey for soothing your throat.",
+backpain: "Gentle stretching and avoid heavy lifting."
+};
+const QUIZ_POOL_KEY = 'quizPool';
+const QUIZ_USED_KEY = 'usedQuizIds';
+const QUIZ_DAILY_KEY = 'dailyQuizIds';
+const QUIZ_DATE_KEY = 'quizDate';
+
+// Helper to decode HTML entities from API
+function decodeHTML(html) {
+const txt = document.createElement('textarea');
+txt.innerHTML = html;
+return txt.value;
+}
+
+// Helper: Generate simple ID for quiz question for duplicate check
+function generateQuizId(quiz) {
+return quiz.q.trim().toLowerCase().replace(/\W/g, '').slice(0, 20);
+}
+
+// Fetch quizzes from API and update pool without duplicates
+async function fetchAndUpdateQuizPool() {
+try {
+const response = await fetch('https://opentdb.com/api.php?amount=5&category=9&type=multiple');
+const data = await response.json();
+if (data.response_code !== 0) return null;
+
+// Decode and prepare quizzes
+let fetchedQuizzes = data.results.map(q => ({
+q: decodeHTML(q.question),
+a: decodeHTML(q.correct_answer),
+id: generateQuizId({q: decodeHTML(q.question)})
+}));
+
+// Load existing pool & used lists
+let quizPool = JSON.parse(localStorage.getItem(QUIZ_POOL_KEY) || '[]');
+
+// Filter only new unique quizzes
+const existingIds = new Set(quizPool.map(q => q.id));
+fetchedQuizzes = fetchedQuizzes.filter(q => !existingIds.has(q.id));
+
+// Add new quizzes to pool
+quizPool = quizPool.concat(fetchedQuizzes);
+localStorage.setItem(QUIZ_POOL_KEY, JSON.stringify(quizPool));
+
+return quizPool;
+
+} catch (e) {
+console.error('Quiz fetch error:', e);
+return null;
+}
+}
+
+// Select 3 daily quizzes from pool without repetition
+function selectDailyQuizzes() {
+const quizPool = JSON.parse(localStorage.getItem(QUIZ_POOL_KEY) || '[]');
+let usedIds = JSON.parse(localStorage.getItem(QUIZ_USED_KEY) || '[]');
+
+// Reset used if all used
+if (usedIds.length >= quizPool.length) {
+usedIds = [];
+}
+
+// Filter unused quizzes
+const unusedQuizzes = quizPool.filter(q => !usedIds.includes(q.id));
+
+// Pick up to 3 from unused
+const selected = unusedQuizzes.slice(0, 3);
+
+// Update used list
+selected.forEach(q => usedIds.push(q.id));
+localStorage.setItem(QUIZ_USED_KEY, JSON.stringify(usedIds));
+
+// Save today's selected quiz IDs and date
+const dailyIds = selected.map(q => q.id);
+localStorage.setItem(QUIZ_DAILY_KEY, JSON.stringify(dailyIds));
+localStorage.setItem(QUIZ_DATE_KEY, getToday());
+
+return selected;
+}
+
+// Get today's date string YYYY-MM-DD
+function getToday() {
+return new Date().toISOString().split('T')[0];
+}
+
+// Load quizzes for today (online/offline)
+async function loadQuiz() {
+const quizContainer = document.getElementById('quiz-container');
+quizContainer.innerHTML = '<p style="text-align:center;">Loading quiz...</p>';
+const today = getToday();
+
+const savedDate = localStorage.getItem(QUIZ_DATE_KEY);
+if (savedDate === today) {
+// Load saved daily quizzes by IDs
+const dailyIds = JSON.parse(localStorage.getItem(QUIZ_DAILY_KEY) || '[]');
+const quizPool = JSON.parse(localStorage.getItem(QUIZ_POOL_KEY) || '[]');
+const quizzes = dailyIds.map(id => quizPool.find(q => q.id === id)).filter(Boolean);
+displayQuizzes(quizzes);
+} else {
+if (navigator.onLine) {
+// Online: fetch new pool and select daily quizzes
+const updatedPool = await fetchAndUpdateQuizPool();
+if (updatedPool && updatedPool.length > 0) {
+const dailyQuizzes = selectDailyQuizzes();
+displayQuizzes(dailyQuizzes);
+} else {
+// fallback to offline pool
+loadOfflineDailyQuiz();
+}
+} else {
+loadOfflineDailyQuiz();
+}
+}
+}
+
+// Load quizzes offline fallback
+function loadOfflineDailyQuiz() {
+const quizContainer = document.getElementById('quiz-container');
+const quizPool = JSON.parse(localStorage.getItem(QUIZ_POOL_KEY) || '[]');
+if (quizPool.length === 0) {
+quizContainer.innerHTML = "<p style='text-align:center;'>No quizzes available offline.</p>";
+return;
+}
+// pick 3 daily quizzes cycling through pool
+const dailyQuizzes = selectDailyQuizzes();
+displayQuizzes(dailyQuizzes);
+}
+
+// Display quizzes in the quiz container
+function displayQuizzes(quizzes) {
+const quizContainer = document.getElementById('quiz-container');
+quizContainer.innerHTML = '';
+if (quizzes.length === 0) {
+quizContainer.innerHTML = "<p style='text-align:center;'>No quizzes available.</p>";
+return;
+}
+quizzes.forEach((q, idx) => {
+const div = document.createElement('div');
+div.style.marginBottom = '15px';
+div.innerHTML = `
+     <p><strong>Q${idx + 1}:</strong> ${q.q}</p>
+     <input type="text" id="answer-${idx}" aria-label="Answer for question ${idx + 1}" />
+     <button onclick="checkAnswer(${idx})" aria-label="Check answer for question ${idx + 1}">Check</button>
+     <p id="result-${idx}" style="font-weight:bold; color:#d6336c;"></p>
+   `;
+quizContainer.appendChild(div);
+});
+}
+
+// Check quiz answer correctness
+function checkAnswer(idx) {
+const today = getToday();
+const dailyIds = JSON.parse(localStorage.getItem(QUIZ_DAILY_KEY) || '[]');
+const quizPool = JSON.parse(localStorage.getItem(QUIZ_POOL_KEY) || '[]');
+const quiz = quizPool.find(q => q.id === dailyIds[idx]);
+const input = document.getElementById(`answer-${idx}`);
+const result = document.getElementById(`result-${idx}`);
+if (!quiz) {
+result.textContent = "Quiz not found.";
+return;
+}
+if (input.value.trim().toLowerCase() === quiz.a.toLowerCase()) {
+result.textContent = "Correct! 🎉";
+} else {
+result.textContent = "Incorrect.";
+}
+}
+
+
+
+function saveGeneralHealthInput() {
+  const input = document.getElementById('generalInput').value.trim();
+  if (!input) return;
+
+  const now = new Date();
+  db.collection("healthInputs").add({
+    type: 'general',
+    input,
+    date: now.toLocaleDateString(),
+    time: now.toLocaleTimeString()
+  }).then(() => {
+    console.log("General health input saved");
+  }).catch(err => {
+    console.error("Error saving general health input:", err);
+  });
+}
+
+function checkGeneral() {
+  const input = document.getElementById('generalInput').value.toLowerCase();
+  let matchedResponses = [];
+  Object.keys(healthResponses).forEach(key => {
+    if (input.includes(key)) {
+      matchedResponses.push(healthResponses[key]);
+    }
+  });
+  const resultP = document.getElementById('general-result');
+  if (matchedResponses.length) {
+    resultP.innerHTML = matchedResponses.map(r => "• " + r).join("<br>");
+  } else {
+    resultP.textContent = "Sorry, no suggestions found. Please consult a doctor.";
+  }
+
+  // Save to Firebase
+  saveGeneralHealthInput();
+}
+
+
+// Period care check logic
+const periodResponses = {
+cramps: "Try light exercise and warm compress.",
+headache: "Stay hydrated and rest.",
+mood: "Take time for yourself, it's okay to feel emotional.",
+heavy: "If bleeding is too heavy, please consult a doctor.",
+tired: "Rest well and eat nutritious food."
+};
+
+function savePeriodCareInput() {
+  const input = document.getElementById('periodInput').value.trim();
+  if (!input) return;
+
+  const now = new Date();
+  db.collection("healthInputs").add({
+    type: 'period',
+    input,
+    date: now.toLocaleDateString(),
+    time: now.toLocaleTimeString()
+  }).then(() => {
+    console.log("Period care input saved");
+  }).catch(err => {
+    console.error("Error saving period care input:", err);
+  });
+}
+
+function checkPeriod() {
+  const input = document.getElementById('periodInput').value.toLowerCase();
+  let matchedResponses = [];
+  Object.keys(periodResponses).forEach(key => {
+    if (input.includes(key)) {
+      matchedResponses.push(periodResponses[key]);
+    }
+  });
+  const resultP = document.getElementById('period-result');
+  if (matchedResponses.length) {
+    resultP.innerHTML = matchedResponses.map(r => "• " + r).join("<br>");
+  } else {
+    resultP.textContent = "Take care baby! If symptoms persist, see your doctor.";
+  }
+
+  // Save to Firebase
+  savePeriodCareInput();
+}
+
+
+// Period Day 1 Confirm and tracker
+function openDay1Confirm() {
+showTab('day1-confirm');
+document.getElementById('confirm-feedback').textContent = '';
+}
+
+function confirmDay1Yes() {
+const confirmBtn = document.getElementById('confirm-day1-btn');
+const resetBtn = document.getElementById('reset-day1-btn');
+
+// Disable confirm button on click to prevent multiple clicks
+confirmBtn.disabled = true;
+confirmBtn.style.opacity = '0.5';
+
+// Optionally disable reset while tracker is starting
+resetBtn.disabled = true;
+
+const existingDate = localStorage.getItem('periodDay1');
+if (existingDate) {
+document.getElementById('confirm-feedback').textContent = `Period tracking already started on ${existingDate}.`;
+// Re-enable reset button if needed
+resetBtn.disabled = false;
+return;
+}
+
+const today = new Date().toISOString().split('T')[0];
+localStorage.setItem('periodDay1', today);
+localStorage.setItem('periodCurrentDay', '1');
+document.getElementById('confirm-feedback').textContent = "Period tracking started. Stay strong! ❤️";
+
+setTimeout(() => {
+showPeriodDayTracker();
+}, 1500);
+}
+
+function resetPeriodTracker() {
+localStorage.removeItem('periodDay1');
+localStorage.removeItem('periodCurrentDay');
+
+// Clear feedback message
+document.getElementById('confirm-feedback').textContent = "Period tracker reset. You can start again.";
+
+// Enable confirm button again
+const confirmBtn = document.getElementById('confirm-day1-btn');
+confirmBtn.disabled = false;
+confirmBtn.style.opacity = '1';
+
+// Enable reset button itself as well (optional)
+const resetBtn = document.getElementById('reset-day1-btn');
+resetBtn.disabled = false;
+}
+
+
+function showPeriodDayTracker() {
+showTab('day-tracker');
+updatePeriodDayMessage();
+}
+
+function updatePeriodDayMessage() {
+const messageBox = document.getElementById('period-day-message');
+const container = document.getElementById('day-tracker');
+if (!messageBox || !container) {
+console.warn('Required DOM elements missing');
+return;
+}
+
+const startDayStr = localStorage.getItem('periodDay1');
+let currentDay = parseInt(localStorage.getItem('periodCurrentDay') || '1');
+
+if (!startDayStr) {
+messageBox.textContent = "You haven't started period tracking yet.";
+removePeriodOverButtons();
+return;
+}
+
+const startDate = new Date(startDayStr);
+const today = new Date();
+const month = today.getMonth();
+
+const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+
+if (diffDays > currentDay) {
+currentDay = diffDays;
+localStorage.setItem('periodCurrentDay', currentDay.toString());
+}
+
+const comfortMessages = monthlyPeriodMessages[month] || [];
+let msg = `Today is Day ${currentDay} of your period.`;
+
+if (comfortMessages[currentDay - 1]) {
+msg += "\n\n" + comfortMessages[currentDay - 1];
+}
+
+messageBox.textContent = msg;
+
+// Show buttons only on Day 6 or Day 7
+if (currentDay === 6 || currentDay === 7) {
+if (!document.getElementById('period-over-yes')) {
+const btnYes = document.createElement('button');
+btnYes.textContent = "Yes, period over";
+btnYes.className = 'mood-btn';
+btnYes.id = 'period-over-yes';
+btnYes.onclick = periodOverYes;
+
+const btnNo = document.createElement('button');
+btnNo.textContent = "No, still ongoing";
+btnNo.className = 'mood-btn';
+btnNo.id = 'period-over-no';
+btnNo.onclick = periodOverNo;
+
+container.appendChild(btnYes);
+container.appendChild(btnNo);
+}
+} else {
+removePeriodOverButtons();
+}
+}
+
+
+function periodOverYes() {
+showFloatingMessage("Happy your period is over! 🎉 Starting Day 1 again.");
+// Reset day count to 1 but keep start date as today
+const todayStr = new Date().toISOString().split('T')[0];
+localStorage.setItem('periodDay1', todayStr);
+localStorage.setItem('periodCurrentDay', '1');
+showTab('day-tracker');
+updatePeriodDayMessage();
+}
+
+function periodOverNo() {
+showFloatingMessage("Take care baby, hope you feel better soon! 💕");
+// Keep tracking as ongoing
+updatePeriodDayMessage();
+}
+
+function removePeriodOverButtons() {
+const yesBtn = document.getElementById('period-over-yes');
+const noBtn = document.getElementById('period-over-no');
+if (yesBtn) yesBtn.remove();
+if (noBtn) noBtn.remove();
+}
+
+
+function showPeriodDayTracker() {
+showTab('day-tracker');
+updatePeriodDayMessage();
+}
+
+// Loader hide after 2 seconds
+window.addEventListener('load', () => {
+setTimeout(() => {
+document.getElementById('loader').style.display = 'none';
+}, 2000);
+});
+
+// Daily notification setup at 6 AM with quote rotation
+function scheduleDailyNotification() {
+if (!("Notification" in window)) return;
+
+Notification.requestPermission().then(permission => {
+if (permission !== 'granted') return;
+
+// Calculate milliseconds to next 6 AM
+const now = new Date();
+let next6am = new Date();
+next6am.setHours(6, 0, 0, 0);
+if (now > next6am) {
+next6am.setDate(next6am.getDate() + 1);
+}
+const timeout = next6am - now;
+
+setTimeout(() => {
+sendNotificationWithQuote();
+// Then schedule every 24h
+setInterval(sendNotificationWithQuote, 24 * 60 * 60 * 1000);
+}, timeout);
+});
+}
+
+function sendNotificationWithQuote() {
+const lastIndex = parseInt(localStorage.getItem('lastQuoteIndex') || '-1');
+let nextIndex = (lastIndex + 1) % quotes.length;
+
+// Period tracking data
+const periodStart = localStorage.getItem('periodDay1');
+const currentDay = parseInt(localStorage.getItem('periodCurrentDay') || '0');
+const today = new Date().toISOString().split('T')[0];
+
+// Comfort messages for each period day (Day 2-7)
+const periodComfortMessages = {
+2: "Take it easy today, baby. Your body needs rest.",
+3: "Keep hydrated and warm. You’re doing great!",
+4: "Remember, light exercise can help ease cramps.",
+5: "Stay cozy and treat yourself kindly.",
+6: "Almost there! Stay strong, you got this.",
+7: "Period is almost over. Take care and relax."
+};
+
+let notificationBody = quotes[nextIndex]; // default quote
+
+if (periodStart) {
+const periodStartDate = new Date(periodStart);
+const now = new Date(today);
+const dayDiff = Math.floor((now - periodStartDate) / (1000 * 60 * 60 * 24)) + 1;
+
+if (dayDiff >= 2 && dayDiff <= 7) {
+// Use period comfort message for that day if exists
+if (periodComfortMessages[dayDiff]) {
+notificationBody = periodComfortMessages[dayDiff];
+}
+}
+}
+
+localStorage.setItem('lastQuoteIndex', nextIndex.toString());
+
+if (Notification.permission === 'granted') {
+new Notification('Good Morning Baby 🌞', {
+body: notificationBody,
+icon: 'icon.png'
+});
+}
+}
+
+function sendMessageToAyush() {
+  const message = document.getElementById('customMessage').value.trim();
+  if (!message) {
+    showFloatingMessage("Please type something to send 💌");
+    return;
+  }
+  const now = new Date();
+  db.collection("messages").add({
+    message,
+    date: now.toLocaleDateString(),
+    time: now.toLocaleTimeString()
+  })
+  .then(() => {
+    showFloatingMessage("Message sent to Ayush 💖");
+    document.getElementById('customMessage').value = '';
+  })
+  .catch((error) => {
+    console.error("Error sending message:", error);
+    showFloatingMessage("Failed to send message 😢");
+  });
+}
+function requestNotificationPermission() {
+  if (!("Notification" in window)) return;
+
+  if (Notification.permission === "granted") {
+    scheduleDailyNotification();
+  } else if (Notification.permission === "default") {
+    // Show custom prompt or button to ask permission
+    showFloatingMessage("Enable notifications for daily love messages! 💖");
+    // Example: a button or click anywhere to trigger permission request
+    document.body.addEventListener('click', askPermissionOnce, { once: true });
+  } else if (Notification.permission === "denied") {
+    showFloatingMessage("Notifications blocked. You can enable them in browser settings.");
+  }
+}
+
+function askPermissionOnce() {
+  Notification.requestPermission().then(permission => {
+    if (permission === "granted") {
+      scheduleDailyNotification();
+      showFloatingMessage("Notifications enabled! 💕");
+    } else {
+      showFloatingMessage("Notifications not enabled.");
+    }
+  });
+}
+
+// On window load
+window.addEventListener('load', () => {
+  requestNotificationPermission();
+});
+
+function readMessageFromAakriti() {
+  db.collection("messages")
+    .orderBy("date", "desc")
+    .limit(1)
+    .get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        alert("No message yet 💌");
+        return;
+      }
+      snapshot.forEach(doc => {
+        alert("Last message: " + doc.data().message);
+      });
+    })
+    .catch(err => {
+      console.error("Error reading message:", err);
+      alert("Error loading message ❌");
+    });
+}
+function savePeriodTrackerToFirebase(startDate, currentDay) {
+  const now = new Date();
+  db.collection("periodTracker").add({
+    startDate,
+    currentDay,
+    savedAtDate: now.toLocaleDateString(),
+    savedAtTime: now.toLocaleTimeString()
+  })
+  .then(() => console.log("Period tracker data saved to Firebase"))
+  .catch(err => console.error("Error saving period tracker data:", err));
+}
+const today = new Date().toISOString().split('T')[0];
+localStorage.setItem('periodDay1', today);
+localStorage.setItem('periodCurrentDay', '1');
+
+// Save to Firebase
+savePeriodTrackerToFirebase(today, 1);
+function saveAppOpenTime() {
+  const now = new Date();
+  db.collection("appOpens").add({
+    openedAtDate: now.toLocaleDateString(),
+    openedAtTime: now.toLocaleTimeString()
+  }).then(() => {
+    console.log("App open time saved to Firebase");
+  }).catch(err => {
+    console.error("Error saving app open time:", err);
+  });
+}
+
+window.addEventListener('load', () => {
+  saveAppOpenTime();
+
+  // Tapai ko existing loader hide code pani yaha rakhna:
+  setTimeout(() => {
+    document.getElementById('loader').style.display = 'none';
+  }, 2000);
+});
+
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  deferredPrompt.prompt();
+  const choice = await deferredPrompt.userChoice;
+  console.log('User choice:', choice.outcome);
+  installBtn.style.display = 'none';
+});
+
+
+// Initialize app
+scheduleDailyNotification();
+</script>
+  <script type="module" src="/ayush-app/src/main.jsx"></script>
+</body>
+</html>
