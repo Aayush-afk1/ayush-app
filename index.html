@@ -1,80 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Choose Your Vibe ✨</title>
+  <meta charset="UTF-8" />
+  <title>3D LOVE 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-
-    h1 {
-      color: white;
-      font-size: 28px;
-      text-shadow: 2px 2px 8px #000;
-      margin-bottom: 30px;
-    }
-
-    .options {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .choice {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
+      background: radial-gradient(#ffdde1, #ee9ca7);
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      width: 200px;
+      height: 100vh;
+      perspective: 1000px;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .choice:hover {
-      transform: scale(1.05);
-    }
-
-    .choice img {
-      width: 100%;
-      display: block;
-    }
-
-    .label {
-      padding: 10px;
+    .love-word {
+      position: absolute;
+      color: #fff;
       font-weight: bold;
-      color: #333;
-      background: #fff3cd;
+      text-shadow: 2px 2px 5px #e91e63;
+      animation: float3d 10s linear infinite;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    @keyframes float3d {
+      0% {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translate3d(100px, -150px, 200px) rotateX(180deg) rotateY(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate3d(-200px, -300px, -400px) rotateX(360deg) rotateY(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>🌟 Choose one of your favourite that suits you 🌟</h1>
+  <script>
+    function create3DLove() {
+      const love = document.createElement('div');
+      love.classList.add('love-word');
+      love.innerText = 'come game bro💖';
+      love.style.left = Math.random() * window.innerWidth + "px";
+      love.style.top = Math.random() * window.innerHeight + "px";
+      love.style.fontSize = (20 + Math.random() * 30) + "px";
+      love.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(love);
 
-  <div class="options">
-    <div class="choice" onclick="location.href='bal.html'">
-      <img src="zuxin.jpg" alt="Option 1">
-      <div class="label">Calm & Cute</div>
-    </div>
+      setTimeout(() => {
+        love.remove();
+      }, 10000);
+    }
 
-    <div class="choice" onclick="location.href='bal.html'">
-      <img src="floryn.png" alt="Option 2">
-      <div class="label">heal & Free</div>
-    </div>
-  </div>
+    setInterval(create3DLove, 300);
+  </script>
 
 </body>
 </html>
