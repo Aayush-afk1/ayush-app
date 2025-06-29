@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Your Vibe ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      font-size: 28px;
+      text-shadow: 2px 2px 8px #000;
+      margin-bottom: 30px;
+    }
+
+    .options {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .choice {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      width: 200px;
+    }
+
+    .choice:hover {
+      transform: scale(1.05);
+    }
+
+    .choice img {
+      width: 100%;
+      display: block;
+    }
+
+    .label {
+      padding: 10px;
+      font-weight: bold;
+      color: #333;
+      background: #fff3cd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌟 Choose one of your favourite that suits you 🌟</h1>
+
+  <div class="options">
+    <div class="choice" onclick="location.href='video.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046753.png" alt="Option 1">
+      <div class="label">Calm & Cute</div>
+    </div>
+
+    <div class="choice" onclick="location.href='video.html'">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/6164081.png" alt="Option 2">
+      <div class="label">Wild & Free</div>
+    </div>
+  </div>
+
+</body>
+</html>
